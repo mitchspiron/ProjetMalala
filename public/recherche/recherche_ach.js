@@ -1,0 +1,32 @@
+  $(document).ready(function(){
+    $('#search').keyup(function(){
+      var txt = $(this).val();
+      if (txt != '') 
+      {
+        $.ajax({
+              url:"recherche_ach.php",
+              method:"POST",
+              data:{search:txt},
+              dataType:"text",
+              success:function(data)
+              {
+                $('#resultat').html(data);
+              }
+        });
+      }
+      else
+      {
+        $('#resultat').html('');
+        $.ajax({
+              url:"recherche_ach.php",
+              method:"POST",
+              data:{search:txt},
+              dataType:"text",
+              success:function(data)
+              {
+                $('#resultat').html(data);
+              }
+        });
+      }
+      });
+  });
